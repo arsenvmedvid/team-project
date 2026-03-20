@@ -1,18 +1,28 @@
-contacts = []
+contacts = {}
 
 def add_contact():
-    number = input("Впишіть телефон: ")
-    contacts.append(number)
+    name = input("Введіть ім'я: ")
+    number = input("Введіть телефон: ")
+    contacts[name] = number
 
 def show_contacts():
-    print(contacts)
+    for name, number in contacts.items():
+        print(name, number)
+
+def delete_contact():
+    name = input("Введіть ім'я для видалення: ")
+    if name in contacts:
+        del contacts[name]
 
 while True:
-    print("1 - добавити")
-    print("2 - показати")
-    choice = input("Виберіть: ")
+    print("1 - Додати")
+    print("2 - Показати")
+    print("3 - Видалити")
+    choice = input("Обрати: ")
 
     if choice == "1":
         add_contact()
     elif choice == "2":
         show_contacts()
+    elif choice == "3":
+        delete_contact()
